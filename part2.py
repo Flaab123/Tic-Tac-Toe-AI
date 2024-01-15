@@ -26,6 +26,20 @@ def fill_table(table,size):
     temp_table = [temp_table[size*i : size*(i+1)] for i in range(size)]
     return temp_table
 
+def fill_coordinate_AI(table,sign='O'):
+    print('Making move level "easy"')
+    size = len(table)
+    temp_table = [item for line in table for item in line]
+    elements = []
+    for i,x in enumerate(temp_table):
+        if x == ' ':
+            elements.append(i)
+    move = random.choice(elements)
+    temp_table[move] = sign
+    table = [temp_table[size*i : size*(i+1)] for i in range(size)]
+    table_print(table)
+    return table
+    
 def fill_coordinate(table):
     print("Enter the coordinates:")
     fill_done = 'n'
@@ -77,18 +91,22 @@ def check_win(table):
     empty_elements = sum([element.count(' ') for element in table])
     if winner == None and empty_elements != 0:
         done = False
-        print("Game not finished")
+        # print("Game not finished")
     elif winner == None and empty_elements == 0:
         done = True
-        print("Draw")
+        # print("Draw")
     else:
         done = True
         print(f"{winner} wins")
     return done
 
+done = False
 tic_tac_table = init_table(3)
-print("Enter the cells:")
-filled_table = fill_table(tic_tac_table,3)
-table_print(filled_table)
-filled_table2 = fill_coordinate(filled_table)
-state = check_win(filled_table2)
+table_print(tic_tac_table)
+while not done:
+    tic_tac_table = fill_coordinate(tic_tac_table)
+    done = check_win(tic_tac_table)
+    if done:
+        break
+    tic_tac_table = fill_coordinate_AI(tic_tac_table)
+    done = check_win(tic_tac_table)
