@@ -41,7 +41,7 @@ def fill_coordinate_AI_easy(table,sign):
     return table
 
 def check_winning_move(table,sign):
-    index = False
+    index = -1
     if sign == 'X':
         opp_sign = 'O'
     else:
@@ -90,9 +90,9 @@ def fill_coordinate_AI_medium(table,sign):
     size = len(table)
     temp_table = [item for line in table for item in line]
     potential_win_move = check_winning_move(table,sign)
-    if not potential_win_move:
+    if potential_win_move == -1:
         potential_block_move = check_winning_move(table,opp_sign)
-        if not potential_block_move:
+        if potential_block_move == -1:
             elements = []
             for i,x in enumerate(temp_table):
                 if x == ' ':
