@@ -217,7 +217,8 @@ def check_win(table,to_print=True):
         # print("Game not finished")
     elif winner == None and empty_elements == 0:
         done = True
-        print("Draw")
+        if to_print == True:
+            print("Draw")
     else:
         done = True
         if to_print == True:
