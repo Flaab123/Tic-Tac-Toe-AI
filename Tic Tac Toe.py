@@ -217,7 +217,7 @@ def check_win(table,to_print=True):
         # print("Game not finished")
     elif winner == None and empty_elements == 0:
         done = True
-        # print("Draw")
+        print("Draw")
     else:
         done = True
         if to_print == True:
@@ -249,6 +249,7 @@ def play_game(player1,player2):
         elif player2 == 'hard':
             tic_tac_table = fill_coordinate_AI_hard(tic_tac_table,sign='O')
         done, winner = check_win(tic_tac_table)
+
 
 exit_game = False
 eligible_players = ("user","easy","medium","hard")
