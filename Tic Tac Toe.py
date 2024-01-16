@@ -122,6 +122,7 @@ def fill_coordinate_AI_medium(table,sign):
     return table
 
 def fill_coordinate_AI_hard(table,sign):
+    print('Making move level "hard"')
     moves = []
     bestScore = -100
     bestMove = None
